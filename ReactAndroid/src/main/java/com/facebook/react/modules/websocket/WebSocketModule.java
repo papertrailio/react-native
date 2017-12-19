@@ -225,7 +225,10 @@ public final class WebSocketModule extends ReactContextBaseJavaModule {
     WebSocket client = mWebSocketConnections.get(id);
     if (client == null) {
       // This is a programmer error
-      throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      // throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      mWebSocketConnections.remove(id);
+      notifyWebSocketFailed(id, "Unknown WebSocket id");
+      return;
     }
     try {
       client.send(message);
@@ -239,7 +242,10 @@ public final class WebSocketModule extends ReactContextBaseJavaModule {
     WebSocket client = mWebSocketConnections.get(id);
     if (client == null) {
       // This is a programmer error
-      throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      // throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      mWebSocketConnections.remove(id);
+      notifyWebSocketFailed(id, "Unknown WebSocket id");
+      return;
     }
     try {
       client.send(ByteString.decodeBase64(base64String));
@@ -252,7 +258,10 @@ public final class WebSocketModule extends ReactContextBaseJavaModule {
     WebSocket client = mWebSocketConnections.get(id);
     if (client == null) {
       // This is a programmer error
-      throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      // throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      mWebSocketConnections.remove(id);
+      notifyWebSocketFailed(id, "Unknown WebSocket id");
+      return;
     }
     try {
       client.send(byteString);
@@ -266,7 +275,10 @@ public final class WebSocketModule extends ReactContextBaseJavaModule {
     WebSocket client = mWebSocketConnections.get(id);
     if (client == null) {
       // This is a programmer error
-      throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      // throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+      mWebSocketConnections.remove(id);
+      notifyWebSocketFailed(id, "Unknown WebSocket id");
+      return;
     }
     try {
       client.send(ByteString.EMPTY);
